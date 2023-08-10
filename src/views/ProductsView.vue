@@ -5,14 +5,15 @@
      <div class="bg-white-50 dark:bg-white-800 border-white-200 dark:border-white-700 rounded-lg p-8 md:p-12 mb-8">
     <div class="grid md:grid-cols-4 gap-8 ">
 
-        <div v-for="data in products" key="data.id">
+        <div v-for="data in getProducts" key="data.id">
         <div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 card" >
     <a href="#">
         <img class="h-auto max-w-full p-8 rounded-t-lg" :src="data.image" style="width: 532px; height: 333px;" alt="product image" />
     </a>
     <div class="px-5 pb-5">
         <a href="#">
-            <h5 class="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">{{ formatText(truncateText(data.title, 41)) }}...</h5>
+            <h5 class="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">{{ (truncateText(data.title, 43)) }}</h5>
+
         </a>
 
         <div class="flex items-center mt-2.5 mb-5">
@@ -35,7 +36,7 @@
         </div>
         <div class="flex items-center justify-between">
             <span class="text-3xl font-bold text-gray-900 dark:text-white">${{ data.price }}</span>
-            <router-link class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" :to="{ name: 'singleproduct' }" >Detail</router-link>
+            <router-link class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" :to="{ name: 'singleproduct', params: { id: data.id }  }" >Detail</router-link>
         </div>
     </div>
 </div>
@@ -48,7 +49,7 @@
 <script>
 // import store from './store/Products';
 
-import { useStore } from 'vuex';
+// import { useStore } from 'vuex';
 // const store = useStore();
 // const getProducts = computed(() => {
 //     return store.getters.getProducts
@@ -61,33 +62,56 @@ import { useStore } from 'vuex';
 //     store.dispatch('fetchProduct')
 // })
 
+// export default {
+//     computed: {
+//         // getProducts() {
+//         //     return this.$store.getters.getProducts
+//         // },
+//         products() {
+//             return this.$store.state.products
+//         }
+//     },
+//     mounted() {
+//         return this.$store.dispatch('fetchProduct')
+//     },
+//     methods: {
+
+//         truncateText(text, maxLength) {
+//             if (text.length > maxLength) {
+//                 return text.substr(0, maxLength);
+//             }
+//             return text;
+//         },
+
+//     formatText(text) {
+//       return text.split(' ')
+//         .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+//         .join(' ');
+//     },
+//   },
+// }
+
+import { mapGetters, mapActions } from 'vuex';
+
 export default {
     computed: {
-        // getProducts() {
-        //     return this.$store.getters.getProducts
-        // },
-        products() {
-            return this.$store.state.products
-        }
-    },
-    mounted() {
-        return this.$store.dispatch('fetchProduct')
+        ...mapGetters('product', ['getProducts']),
     },
     methods: {
+        ...mapActions('product', ['fetchProducts']),
 
         truncateText(text, maxLength) {
             if (text.length > maxLength) {
-                return text.substr(0, maxLength);
+                return text.substr(0, maxLength) + '...';
             }
             return text;
         },
 
-    formatText(text) {
-      return text.split(' ')
-        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-        .join(' ');
+
     },
-  },
+    created() {
+        this.fetchProducts();
+    },
 }
 
 </script>

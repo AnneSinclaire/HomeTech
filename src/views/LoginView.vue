@@ -1,80 +1,127 @@
 <template>
-    <!-- <div>
-        <div class="container mx-auto-mt-8"> </div>
-        <h1 class="text-3x1 font-semibold mb-4"> Login </h1>
-            <form @submit.prevent="login">
-            <div class="mb-4">
-                <label for="username" class="block font-medium">Username:</label>
-                <input type="text" id="username" v-model="username" class="mt-1 p-2 round border w-60" required>
-            </div>
-            <div class="mb-4">
-                <label for="password" class="block font-medium">Password:</label>
-                <input type="password" id="username" v-model="password" class="mt-1 p-2 round border w-60" required>
-            </div>
-            <div>
-                <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">Login</button>
-            </div>
-        </form>
-    </div> -->
-    <center>
+    <div class="flex min-h-screen w-screen w-full items-center justify-center text-gray-600 bg-gray-50">
+        <div class="relative mt-8">
 
-    <div class="bg-white-50 dark:bg-white-800 border-white-200 dark:border-white-700 rounded-lg p-8 md:p-12 mb-8">
-    <div class="grid md:grid-cols-4 gap-8 ">
-<div class="w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
-    <form class="space-y-6">
-        <h5 class="text-xl font-medium text-gray-900 dark:text-white">Sign in to our platform</h5> 
-        <div>
-            <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
-            <input type="text" name="email" id="username" v-model="username" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="name@company.com" required>
-        </div>
-        <div>
-            <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your password</label>
-            <input type="password" name="password" id="username" v-model="password" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
-        </div>
-        <div class="flex items-start">
-            <div class="flex items-start">
-                <div class="flex items-center h-5">
-                    <input id="remember" type="checkbox" value="" class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800" required>
+            <div class="hidden sm:block h-56 w-56 text-indigo-300 absolute a-z-10 -left-20 -top-20">
+                <svg id='patternId' width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'>
+                    <defs>
+                        <pattern id='a' patternUnits='userSpaceOnUse' width='40' height='40'
+                            patternTransform='scale(0.6) rotate(0)'>
+                            <rect x='0' y='0' width='100%' height='100%' fill='none' />
+                            <path d='M11 6a5 5 0 01-5 5 5 5 0 01-5-5 5 5 0 015-5 5 5 0 015 5' stroke-width='1' stroke='none'
+                                fill='currentColor' />
+                        </pattern>
+                    </defs>
+                    <rect width='800%' height='800%' transform='translate(0,0)' fill='url(#a)' />
+                </svg>
+            </div>
+            <div class="hidden sm:block h-28 w-28 text-indigo-300 absolute a-z-10 -right-20 -bottom-20">
+                <svg id='patternId' width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'>
+                    <defs>
+                        <pattern id='b' patternUnits='userSpaceOnUse' width='40' height='40'
+                            patternTransform='scale(0.5) rotate(0)'>
+                            <rect x='0' y='0' width='100%' height='100%' fill='none' />
+                            <path d='M11 6a5 5 0 01-5 5 5 5 0 01-5-5 5 5 0 015-5 5 5 0 015 5' stroke-width='1' stroke='none'
+                                fill='currentColor' />
+                        </pattern>
+                    </defs>
+                    <rect width='800%' height='800%' transform='translate(0,0)' fill='url(#b)' />
+                </svg>
+            </div>
+            <!-- Register -->
+            <div class="relative flex flex-col sm:w-[30rem] rounded-lg border-gray-400 bg-white shadow-lg px-4">
+                <div class="flex-auto p-6">
+                    <!-- Logo -->
+                    <div class="mb-10 flex flex-shrink-0 flex-grow-0 items-center justify-center overflow-hidden">
+                        <a href="#"
+                            class="flex cursor-pointer items-center gap-2 text-indigo-500 no-underline hover:text-indigo-500">
+                            <span
+                                class="flex-shrink-0 text-3xl font-black lowercase tracking-tight opacity-100">KCStore</span>
+                        </a>
+                    </div>
+                    <!-- /Logo -->
+                    <h4 class="mb-2 font-medium text-gray-700 xl:text-xl">Welcome to KCStore!</h4>
+                    <p class="mb-6 text-gray-500">Please sign-in to access your account</p>
+
+                    <form id="" class="mb-4" @submit.prevent="performLogin">
+                        <div class="mb-4">
+                            <label for="email" class="mb-2 inline-block text-xs font-medium uppercase text-gray-700">Email
+                                or Username</label>
+                            <input type="text"
+                                class="block w-full cursor-text appearance-none rounded-md border border-gray-400 bg--100 py-2 px-3 text-sm outline-none focus:border-indigo-500 focus:bg-white focus:text-gray-600 focus:shadow"
+                                id="email" v-model="username" placeholder="Enter your email or username" autofocus="" />
+                        </div>
+                        <div class="mb-4">
+                            <div class="flex justify-between">
+                                <label class="mb-2 inline-block text-xs font-medium uppercase text-gray-700"
+                                    for="password">Password</label>
+                                <a href="auth-forgot-password-basic.html"
+                                    class="cursor-pointer text-indigo-500 no-underline hover:text-indigo-500">
+                                    <small class=" ">Forgot Password?</small>
+                                </a>
+                            </div>
+                            <div class="relative flex w-full flex-wrap items-stretch">
+                                <input type="password" id="password"
+                                    class="relative block flex-auto cursor-text appearance-none rounded-md border border-gray-400 bg--100 py-2 px-3 text-sm outline-none focus:border-indigo-500 focus:bg-white focus:text-gray-600 focus:shadow"
+                                    v-model="password" placeholder="············" />
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <div class="block">
+                                <input
+                                    class="mt-1 mr-2 h-5 w-5 appearance-none rounded border border-gray-300 bg-contain bg-no-repeat align-top text-black shadow checked:bg-indigo-500 focus:border-indigo-500 focus:shadow"
+                                    type="checkbox" id="remember-me"
+                                    style="background-image: url(&quot;data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M6 10l3 3l6-6'/%3e%3c/svg%3e&quot;)"
+                                    checked />
+                                <label class="inline-block" for="remember-me"> Remember Me </label>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <button
+                                class="grid w-full cursor-pointer select-none rounded-md border border-indigo-500 bg-indigo-500 py-2 px-5 text-center align-middle text-sm text-white shadow hover:border-indigo-600 hover:bg-indigo-600 hover:text-white focus:border-indigo-600 focus:bg-indigo-600 focus:text-white focus:shadow-none"
+                                type="submit">Sign in</button>
+                        </div>
+                    </form>
+
+                    <p class="mb-4 text-center">
+                        New on kcstore?
+                        <a href="#" class="cursor-pointer text-indigo-500 no-underline hover:text-indigo-500"> Create an
+                            account </a>
+                    </p>
                 </div>
-                <label for="remember" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Remember me</label>
             </div>
-            <a href="#" class="ml-auto text-sm text-blue-700 hover:underline dark:text-blue-500">Lost Password?</a>
+            <!-- /Register -->
         </div>
-        <button type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Login to your account</button>
-        <div class="text-sm font-medium text-gray-500 dark:text-gray-300">
-            Not registered? <a href="#" class="text-blue-700 hover:underline dark:text-blue-500">Create account</a>
-        </div>
-    </form>
-</div>
-</div>
-</div>
-</center>
-
+    </div>
 </template>
 
 <script>
-    import { users } from '../assets/user'
+import { mapActions } from 'vuex';
 
-    export default {
-        data() {
-            return {
-                username: '',
-                password: '',
-                isLoggedIn: 'true'
+export default {
+    data() {
+        return {
+            username: '',
+            password: '',
+        };
+    },
+    methods: {
+        ...mapActions('auth', ['login']),
+        async performLogin() {
+            const credentials = {
+                username: this.username,
+                password: this.password,
             };
-        },
 
-        methods: {
-            login() {
-                const foundUser = users.find(user => user.username === this.username && user.password == this.password && user.isLoggedin == true);
-                if (foundUser) {    
-                    alert('Login berhasil!');
-                    this.$router.push('/produk')
-                    // dapat melakukan navigasi ke halaman lain jika login behasil
-                } else {
-                    alert('Username atau Password salah');
-                }
-            },
+            const success = await this.login(credentials);
+
+            if (success) {
+                // Redirect to the desired route on successful login
+                this.$router.push('/');
+            } else {
+                alert("Login Failed");
+            }
         },
-    };
+    },
+};
 </script>

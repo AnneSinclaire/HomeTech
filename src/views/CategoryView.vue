@@ -2,7 +2,7 @@
  <div class="bg-white-50 dark:bg-white-800 border-white-200 dark:border-white-700 rounded-lg p-8 md:p-12 mb-8">
     <div class="grid md:grid-cols-4 gap-8 ">
 
-        <div v-for="data in categories" key="data.id">
+        <div v-for="data in getCategories" key="data.id">
             
 <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
     <a href="#">
@@ -27,34 +27,18 @@
 </template>
 
 <script>
+    import { mapGetters, mapActions } from 'vuex';
 
-import { onMounted } from 'vue'
-  
-  export default {
-
+export default {
     computed: {
-        // getProducts() {
-        //     return this.$store.getters.getProducts
-        // },
-        categories() {
-            return this.$store.state.categories
-        }
-    },
-    mounted() {
-        return this.$store.dispatch('fetchCategorie')
+        ...mapGetters('categories', ['getCategories']),
     },
     methods: {
-    formatText(text) {
-      return text.split(' ')
-        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-        .join(' ');
-    },
-  },
+        ...mapActions('categories', ['fetchCategorie']),
 
-      setup(props, context) {
-          onMounted(() => {
-              context.emit("id-menu", 3);
-          })
-      }
-  }
+    },
+    created() {
+        this.fetchCategorie();
+    },
+}
 </script>
