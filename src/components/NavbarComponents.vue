@@ -43,17 +43,30 @@
         <router-link :class="{ active: rl_2 }" :to="{ name: 'about' }">About</router-link>
       </li> -->
       <li>
-        <router-link :to="{ name: 'products' }">Home</router-link>
+        <router-link :to="{ name: 'home' }">Home</router-link>
       </li>
       <li>
-        <router-link :to="{ name: 'category' }">Category</router-link>
+        <router-link :to="{ name: 'product' }">Product</router-link>
       </li>
+      <li>
+        <router-link :to="{ name: 'contact' }">Contact</router-link>
+      </li>
+      <li>
+        <router-link :to="{ name: 'cart' }">Cart</router-link>
+      </li>
+
     </ul>
   </div>
   </div>
 </nav>
 
+
     </div>
+
+    
+
+
+
 </template>
 
 <script>

@@ -183,21 +183,21 @@
 <script>
 import { mapGetters, mapActions } from "vuex";
 
-export default {
-    computed: {
-        ...mapGetters("product", ["getProductById"]),
-        product() {
-            return this.getProductById(Number(this.$route.params.id));
-        },
-    },
-    methods: {
-        ...mapActions("product", ["fetchSingleProduct"]),
-    },
-    mounted() {
-        const productId = this.$route.params.id;
-        console.log("Fetching single product with ID:", productId);
-        this.fetchSingleProduct(productId);
-    },
+// export default {
+//     computed: {
+//         ...mapGetters("product", ["getProductById"]),
+//         product() {
+//             return this.getProductById(Number(this.$route.params.id));
+//         },
+//     },
+//     methods: {
+//         ...mapActions("product", ["fetchSingleProduct"]),
+//     },
+//     mounted() {
+//         const productId = this.$route.params.id;
+//         console.log("Fetching single product with ID:", productId);
+//         this.fetchSingleProduct(productId);
+//     },
 
-};
+// };
 </script>

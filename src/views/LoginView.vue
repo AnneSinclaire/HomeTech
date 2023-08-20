@@ -1,56 +1,26 @@
 <template>
-    <div class="flex min-h-screen w-screen w-full items-center justify-center text-gray-600 bg-gray-50">
-        <div class="relative mt-8">
+<section class="bg-gray-50 dark:bg-gray-900">
+  <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+      <a href="#" class="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
+          <img class="w-8 h-8 mr-2" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg" alt="logo">
+          Flowbite    
+      </a>
+      <div class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+          <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+              <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+                  Sign in to your account
+              </h1>
+              <form id="" class="mb-4" @submit.prevent="performLogin">
 
-            <div class="hidden sm:block h-56 w-56 text-indigo-300 absolute a-z-10 -left-20 -top-20">
-                <svg id='patternId' width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'>
-                    <defs>
-                        <pattern id='a' patternUnits='userSpaceOnUse' width='40' height='40'
-                            patternTransform='scale(0.6) rotate(0)'>
-                            <rect x='0' y='0' width='100%' height='100%' fill='none' />
-                            <path d='M11 6a5 5 0 01-5 5 5 5 0 01-5-5 5 5 0 015-5 5 5 0 015 5' stroke-width='1' stroke='none'
-                                fill='currentColor' />
-                        </pattern>
-                    </defs>
-                    <rect width='800%' height='800%' transform='translate(0,0)' fill='url(#a)' />
-                </svg>
-            </div>
-            <div class="hidden sm:block h-28 w-28 text-indigo-300 absolute a-z-10 -right-20 -bottom-20">
-                <svg id='patternId' width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'>
-                    <defs>
-                        <pattern id='b' patternUnits='userSpaceOnUse' width='40' height='40'
-                            patternTransform='scale(0.5) rotate(0)'>
-                            <rect x='0' y='0' width='100%' height='100%' fill='none' />
-                            <path d='M11 6a5 5 0 01-5 5 5 5 0 01-5-5 5 5 0 015-5 5 5 0 015 5' stroke-width='1' stroke='none'
-                                fill='currentColor' />
-                        </pattern>
-                    </defs>
-                    <rect width='800%' height='800%' transform='translate(0,0)' fill='url(#b)' />
-                </svg>
-            </div>
-            <!-- Register -->
-            <div class="relative flex flex-col sm:w-[30rem] rounded-lg border-gray-400 bg-white shadow-lg px-4">
-                <div class="flex-auto p-6">
-                    <!-- Logo -->
-                    <div class="mb-10 flex flex-shrink-0 flex-grow-0 items-center justify-center overflow-hidden">
-                        <a href="#"
-                            class="flex cursor-pointer items-center gap-2 text-indigo-500 no-underline hover:text-indigo-500">
-                            <span
-                                class="flex-shrink-0 text-3xl font-black lowercase tracking-tight opacity-100">KCStore</span>
-                        </a>
-                    </div>
-                    <!-- /Logo -->
-                    <h4 class="mb-2 font-medium text-gray-700 xl:text-xl">Welcome to KCStore!</h4>
-                    <p class="mb-6 text-gray-500">Please sign-in to access your account</p>
-
-                    <form id="" class="mb-4" @submit.prevent="performLogin">
-                        <div class="mb-4">
+                
+                <div class="mb-4">
                             <label for="email" class="mb-2 inline-block text-xs font-medium uppercase text-gray-700">Email
                                 or Username</label>
                             <input type="text"
-                                class="block w-full cursor-text appearance-none rounded-md border border-gray-400 bg--100 py-2 px-3 text-sm outline-none focus:border-indigo-500 focus:bg-white focus:text-gray-600 focus:shadow"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                 id="email" v-model="username" placeholder="Enter your email or username" autofocus="" />
                         </div>
+
                         <div class="mb-4">
                             <div class="flex justify-between">
                                 <label class="mb-2 inline-block text-xs font-medium uppercase text-gray-700"
@@ -66,33 +36,32 @@
                                     v-model="password" placeholder="············" />
                             </div>
                         </div>
-                        <div class="mb-4">
-                            <div class="block">
-                                <input
-                                    class="mt-1 mr-2 h-5 w-5 appearance-none rounded border border-gray-300 bg-contain bg-no-repeat align-top text-black shadow checked:bg-indigo-500 focus:border-indigo-500 focus:shadow"
-                                    type="checkbox" id="remember-me"
-                                    style="background-image: url(&quot;data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M6 10l3 3l6-6'/%3e%3c/svg%3e&quot;)"
-                                    checked />
-                                <label class="inline-block" for="remember-me"> Remember Me </label>
-                            </div>
-                        </div>
-                        <div class="mb-4">
-                            <button
-                                class="grid w-full cursor-pointer select-none rounded-md border border-indigo-500 bg-indigo-500 py-2 px-5 text-center align-middle text-sm text-white shadow hover:border-indigo-600 hover:bg-indigo-600 hover:text-white focus:border-indigo-600 focus:bg-indigo-600 focus:text-white focus:shadow-none"
-                                type="submit">Sign in</button>
-                        </div>
-                    </form>
 
-                    <p class="mb-4 text-center">
-                        New on kcstore?
-                        <a href="#" class="cursor-pointer text-indigo-500 no-underline hover:text-indigo-500"> Create an
-                            account </a>
-                    </p>
-                </div>
-            </div>
-            <!-- /Register -->
-        </div>
-    </div>
+                  <div class="flex items-center justify-between">
+                      <div class="flex items-start">
+                          <div class="flex items-center h-5">
+                            <input id="remember" aria-describedby="remember" type="checkbox" class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800" required="">
+                          </div>
+                          <div class="ml-3 text-sm">
+                            <label for="remember" class="text-gray-500 dark:text-gray-300">Remember me</label>
+                          </div>
+                      </div>
+                      <a href="#" class="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500">Forgot password?</a>
+                  </div>
+                  <br>
+                  <div>
+                  <button type="submit" class="w-full text-black bg-indigo-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Sign in</button>
+                  <br>
+                  <br>
+                  <p class="text-sm font-light text-gray-500 dark:text-gray-400">
+                      Don’t have an account yet?     <router-link class="font-medium text-primary-600 hover:underline dark:text-primary-500" :to="{ name: 'register' }">Sign up</router-link> 
+                  </p>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </div>
+</section>
 </template>
 
 <script>
