@@ -6,7 +6,7 @@
 
     <router-view @id-menu="setMenu($event)" />
 
-    <footerComponents />
+    <!-- <footerComponents /> -->
 
   </div>
 </template>
@@ -14,8 +14,8 @@
 <script > 
 // import 'flowbite/dist/flowbite.js'
 
-import NavbarComponents from './components/NavbarComponents.vue';
-import footerComponents from './components/FooterComponents.vue'
+import NavbarComponents from './components/NavbarComponent.vue';
+// import footerComponents from './components/FooterComponents.vue'
 import { ref } from 'vue'
 
 export default {
@@ -25,7 +25,7 @@ export default {
 
 
 
-      footerComponents
+      // footerComponents
     },
 
     setup()
